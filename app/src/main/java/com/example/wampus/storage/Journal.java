@@ -26,7 +26,6 @@ public class Journal {
 
     @ColumnInfo(name = "mood")
     public String mood;
-
     public int getId() {
         return id;
     }
