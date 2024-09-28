@@ -19,6 +19,9 @@ public interface JournalDAO {
     @Delete
     void delete(Journal journal);
 
+    @Query("SELECT * FROM journal_table WHERE id = :id")
+    Journal getJournalById(int id);
+
     @Query("SELECT * FROM journal_table WHERE date = :date")
     Journal getJournalByDate(String date);
 
