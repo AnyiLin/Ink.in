@@ -32,6 +32,11 @@ public class JournalDatabaseAccessor {
         return dao.getAllJournals();
     }
 
+    public Journal getJournalById(int id) {
+        return dao.getJournalById(id);
+    }
+
+
     public Journal getJournalByDate(String date) {
         return dao.getJournalByDate(date);
     }

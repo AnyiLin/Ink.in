@@ -2,6 +2,8 @@ package com.example.wampus;
 
 import android.os.Bundle;
 
+import com.example.wampus.storage.Journal;
+import com.example.wampus.storage.JournalDatabaseAccessor;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,10 +20,30 @@ import com.example.wampus.databinding.ActivityMainBinding;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.List;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+
 public class MainActivity extends AppCompatActivity {
+
+    public ListRefreshListener getListRefreshListener() {
+        return listRefreshListener;
+    }
+
+    public void setListRefreshListener(ListRefreshListener listRefreshListener) {
+        this.listRefreshListener = listRefreshListener;
+    }
+
+    private ListRefreshListener listRefreshListener;
+
+    public interface ListRefreshListener {
+        void onListRefresh();
+    }
 
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
+    public JournalDatabaseAccessor journalDatabaseAccessor;
+    public List<Journal> journalList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,11 +61,23 @@ public class MainActivity extends AppCompatActivity {
         binding.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Deleted journals", Snackbar.LENGTH_LONG)
                         .setAnchorView(R.id.fab)
                         .setAction("Action", null).show();
+                    Executors.newSingleThreadExecutor().execute(() -> {
+                        for (Journal journal : journalList) {
+                            journalDatabaseAccessor.delete(journal);
+                        }
+                        journalList = journalDatabaseAccessor.getAllJournals();
+                        if (getListRefreshListener() != null) {
+                            getListRefreshListener().onListRefresh();
+                        }
+                    });
             }
         });
+
+        journalDatabaseAccessor = new JournalDatabaseAccessor(this);
+        updateJournalList();
     }
 
     @Override
@@ -73,5 +107,11 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         return NavigationUI.navigateUp(navController, appBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    public void updateJournalList() {
+        Executors.newSingleThreadExecutor().execute(() -> {
+           journalList = journalDatabaseAccessor.getAllJournals();
+        });
     }
 }
