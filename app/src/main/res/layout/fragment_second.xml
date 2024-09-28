@@ -16,20 +16,63 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/previous"
-            app:layout_constraintBottom_toTopOf="@id/textview_second"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/textview_second"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/lorem_ipsum"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/button_second" />
+        <ScrollView
+            android:id="@+id/journalView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_second"
+            tools:layout_editor_absoluteX="16dp">
+
+            <LinearLayout
+                android:id="@+id/journalLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:id="@+id/listJournalLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/listJournalTitleLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/listJournalSelector"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checkable="true"
+                            app:checkedIconVisible="false"
+                            app:closeIconVisible="false" />
+
+                        <TextView
+                            android:id="@+id/listJournalTitle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="title" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/listJournalEntry"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="entry" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>
