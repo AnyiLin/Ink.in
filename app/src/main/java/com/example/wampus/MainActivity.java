@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-//
+
 //        binding.fab.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
 //                    });
 //            }
 //        });
-
+//
         journalDatabaseAccessor = new JournalDatabaseAccessor(this);
         journalGroupDatabaseAccessor = new JournalGroupDatabaseAccessor(this);
         updateJournalList();
