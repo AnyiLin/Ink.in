@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1074085748857",
+    "project_id": "wampus-2cda9",
+    "storage_bucket": "wampus-2cda9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1074085748857:android:30dfdedd6589550e0af4a8",
+        "android_client_info": {
+          "package_name": "com.example.wampus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1074085748857-28sv60jnnf6uk6ba2s91e00dpenrohct.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.wampus",
+            "certificate_hash": "be2a09ac28d1698a7d6cc3e01dd8038d17db06af"
+          }
+        },
+        {
+          "client_id": "1074085748857-9mohdhjnre85kvmkjh2rp8htb6vqojlp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALnJOMLRxhlexmCeq0Jl9IS7vmv6fLDHk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1074085748857-9mohdhjnre85kvmkjh2rp8htb6vqojlp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
