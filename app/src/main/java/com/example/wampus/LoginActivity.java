@@ -147,7 +147,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 Log.d(TAG, "onClick: begin google sign in");
-                Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
 
                 Intent intent = googleSignInClient.getSignInIntent();
                 startActivityForResult(intent, RC_SIGN_IN);
