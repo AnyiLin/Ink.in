@@ -12,6 +12,7 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.wampus.databinding.FragmentSecondBinding;
 import com.example.wampus.storage.Journal;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
 import java.util.concurrent.Executors;
@@ -52,9 +53,12 @@ public class SecondFragment extends Fragment {
     public void refreshList() {
         binding.journalLayout.removeAllViews();
         for (Journal journal : ((MainActivity) getActivity()).journalList) {
-            TextView textView = new TextView(getActivity());
-            textView.setText(journal.journalTitle + "\n" + journal.journalEntry);
-            binding.journalLayout.addView(textView);
+            JournalListEntry entry = new JournalListEntry(journal);
+            binding.journalLayout.addView(entry.getListEntry(getContext(), () -> {
+                Snackbar.make(binding.journalView, "Clicked on journal", Snackbar.LENGTH_LONG)
+                        .setAnchorView(R.id.fab)
+                        .setAction("Action", null).show();
+            }));
         }
     }
 
