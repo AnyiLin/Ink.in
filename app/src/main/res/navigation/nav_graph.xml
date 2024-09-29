@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/loadingFragment">
 
     <fragment
         android:id="@+id/FirstFragment"
@@ -12,17 +12,58 @@
         tools:layout="@layout/fragment_first">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_FirstFragment_to_createJournalFragment"
+            app:destination="@id/createJournalFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_createJournalEntryFragment"
+            app:destination="@id/createJournalEntryFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_journalViewFragment"
+            app:destination="@id/journalViewFragment" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.example.wampus.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
-
+        android:id="@+id/JournalFragment"
+        android:name="com.example.wampus.JournalFragment"
+        android:label="@string/journal_fragment_label"
+        tools:layout="@layout/fragment_journal">
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
+            android:id="@+id/action_JournalFragment_to_createJournalEntryFragment"
+            app:destination="@id/createJournalEntryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loadingFragment"
+        android:name="com.example.wampus.LoadingFragment"
+        android:label="fragment_loading"
+        tools:layout="@layout/fragment_loading" >
+        <action
+            android:id="@+id/action_loadingFragment_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createJournalFragment"
+        android:name="com.example.wampus.CreateJournalFragment"
+        android:label="fragment_create_journal"
+        tools:layout="@layout/fragment_create_journal" >
+        <action
+            android:id="@+id/action_createJournalFragment_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createJournalEntryFragment"
+        android:name="com.example.wampus.CreateJournalEntryFragment"
+        android:label="fragment_create_journal_entry"
+        tools:layout="@layout/fragment_create_journal_entry" >
+        <action
+            android:id="@+id/action_createJournalEntryFragment_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/journalViewFragment"
+        android:name="com.example.wampus.JournalViewFragment"
+        android:label="fragment_journal_view"
+        tools:layout="@layout/fragment_journal_view" >
+        <action
+            android:id="@+id/action_journalViewFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
     </fragment>
 </navigation>
