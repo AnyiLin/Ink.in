@@ -137,6 +137,8 @@ public class LoginActivity extends AppCompatActivity {
 
         // init firebase auth
         firebaseAuth = FirebaseAuth.getInstance();
+        firebaseAuth.signOut();
+        googleSignInClient.revokeAccess();
 
         setContentView(binding.getRoot());
 
